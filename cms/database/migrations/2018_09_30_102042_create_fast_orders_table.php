@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateFastOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('fast_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('middlename')->nullable();
-            $table->string('phone');
-            $table->integer('role_id')->length(10)->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->rememberToken();
+            $table->string('address');
             $table->timestamps();
         });
     }
@@ -37,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('fast_orders');
     }
 }
