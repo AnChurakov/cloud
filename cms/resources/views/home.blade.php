@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="product/add">Добавить товар</a><br><br>
+                    <a href="category/add">Добавить категория</a><br><br>
+                    <a href="category/all">Все категории</a><br><br>
+                    <a href="subcategory/add">Добавить подкатегорию</a><br><br>
+                    <a href="subcategory/all">Все подкатегории</a><br><br>
+                    <a href="role/add">Добавить роль</a><br><br>
+                    
                 </div>
             </div>
         </div>
