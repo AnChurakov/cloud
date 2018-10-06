@@ -1,43 +1,54 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Добавление новой подкатегории</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+<div class="row">
+							<div class="col-xl-12">
+								<div class="page-title-box">
+                                    <h4 class="page-title float-left">Добавление новой подкатегории</h4>
+
+                                    <ol class="breadcrumb float-right">
+                                        <li class="breadcrumb-item"><a href="#">Uplon</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                        <li class="breadcrumb-item active">Dashboard</li>
+                                    </ol>
+
+                                    <div class="clearfix"></div>
+                                </div>
+							</div>
+						</div>
+                        <!-- end row -->
+
+
+            <div class="row">
+                    <div class="col-7">
+                        <div class="card-box">
+                         <div class="col-12">
+							
+							<form action="create" method="POST">
+                            @csrf
+							<div class="form-group">
+                                            <label>Название</label>
+                                            <input type="text" class="form-control" id="SubcategoryName"
+                                                    placeholder="Введите название подкатегории">	
+                            </div>
+							
+							
+							<div class="form-group">
+                                            <label>Категория</label>
+                                            <select class="form-control" name="CategoryId">
+												<option disabled selected>Выберите категорию</option>
+											@foreach($categories as $cat)
+                                            <option vale="{{$cat->id}}">{{$cat->name}}</option>
+                                            @endforeach
+											</select>
+                            </div>
+							
+							<input type="submit" class="btn btn-sm btn-success" id="sub" value="Добавить">	
+
+						</form>
+						</div>
+                          
                         </div>
-                    @endif
-
-                    <form action='create' method='post'>
-
-                    @csrf
-
-                    <input type='text' name='nameSubcategory' class='form-control'>
-
-                    <select class="form-control" name="category">
-
-                    @foreach ($categories as $cat)
-                        <option value="{{$cat->id}}">{{ $cat->name }}</option>
-                    @endforeach               
-
-                    </select>
-
-
-                    <input type='submit' class="btn btn-primary" value="Добавить" />
-
-                    </form>
-
-                    
-                </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    </div>
+                </div> <!-- end row --
 @endsection
