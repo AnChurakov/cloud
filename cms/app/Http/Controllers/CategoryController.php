@@ -2,6 +2,8 @@
 
 namespace CMS\Http\Controllers;
 
+use Validator;
+use CMS\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,30 +16,33 @@ class CategoryController extends Controller
 
     public function create(Request $request)
     {
-        if ($request != null)
-        {
-            $name = $request->input('nameCategory');
-            
-            DB::table('categories')->insert(['name' => $name]);
+		$validator = new Validator::make($request->all(), [
+            'description' => 'required|max:2000',
+            'user_id' => 'required'
+        ]);
+		if ($validator->fails()) {
+            return redirect('course/create')
+                        ->withErrors($validator)
+                        ->withInput();
         }
+		
+		Category::create([
+			'name' => $request->nameCategory
+		]);
 
         return view('category.add');
     }
 
     public function all()
     {
-        $allCategory = DB::table('categories')->get();
-
-        return view('category.all', ['categories' => $allCategory]);
+        return view('category.all', ['categories' => Category::all()]);
     }
 
     public function delete($id)
     {
-        if ($id != null)
-        {
-            DB::table('categories')->where('id', '=', $id)->delete();
-        }
-
-        return redirect()->route('CatAll');
+        Category::findOrFail($id)
+					->delete();
+		
+        return redirect('CatAll');
     }
 }
