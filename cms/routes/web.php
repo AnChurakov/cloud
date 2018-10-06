@@ -26,6 +26,8 @@ Route::post('subcategory/create', 'SubCategoryController@create');
 Route::get('role/add', 'RoleController@add')->name('RoleAdd');
 Route::post('role/create', 'RoleController@create');
 
+Route::get('/admin', 'AdminController@index')->name('admin');
+
 Route::get('/', function () {
     return view('welcome');
 });
