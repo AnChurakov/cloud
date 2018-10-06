@@ -16,14 +16,15 @@ class SubCategoryController extends Controller
 
     public function create(Request $request)
     {
-        $name = $request->input('nameSubcategory');
+        $name = $request->input('SubcategoryName');
 
-        $category = $request->input('category');
+        $category = $request->input('CategoryId');
 
         if ($name != null && $category != null)
         {
             DB::table('sub_categories')
-            ->insert(['name' => $name, 
+            ->insert([
+            'name' => $name, 
             'category_id' => $category,
             'desc' => ''
             ]);

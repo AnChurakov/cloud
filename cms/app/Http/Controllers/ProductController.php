@@ -2,6 +2,9 @@
 
 namespace CMS\Http\Controllers;
 
+use CMS\Category;
+use CMS\SubCategory;
+use CMS\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,11 +12,11 @@ class ProductController extends Controller
 {
     public function add(){
 
-        $category = DB::table('categories')->get();
+        $Categories = Category::all()->sortByDesc('name');
 
-        $subcatgetory = DB::table('sub_categories')->get();
+        $Subcategory = Subcategory::all()->sortByDesc('name');
 
-        return view('product.add', ['category' => $category, 'subcategory' => $subcatgetory]);
+        return view('product.add', ['category' => $Categories, 'subcategory' => $Subcategory]);
         
     }
 
