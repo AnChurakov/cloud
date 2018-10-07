@@ -26,6 +26,11 @@ Route::post('subcategory/create', 'SubCategoryController@create');
 Route::get('role/add', 'RoleController@add')->name('RoleAdd');
 Route::post('role/create', 'RoleController@create');
 
+Route::get('coupon/all', 'CouponController@all')->name('CouponAll');
+Route::get('coupon/add', 'CouponController@add')->name('CouponAdd');
+Route::post('coupon/create', 'CouponController@create');
+Route::get('coupon/delete/{id}', 'CouponController@delete');
+
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/', function () {

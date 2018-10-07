@@ -19,9 +19,10 @@ class CreateCouponsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('subcategory_id')->length(10)->unsigned()->nullable();
             $table->foreign('subcategory_id')->references('id')->on('sub_categories');
-            $table->integer('product_id')->length(10)->unsigned();
+            $table->integer('product_id')->length(10)->unsigned()->nullable();
             $table->foreign('product_id')->references('id')->on('products');
             $table->string('name');
+            $table->string('procent');
             $table->dateTime('date');
             $table->string('status');
             $table->timestamps();
