@@ -28,7 +28,7 @@
                             @csrf
 							<div class="form-group">
                                             <label>Название</label>
-                                            <input type="text" class="form-control" id="SubcategoryName"
+                                            <input type="text" class="form-control" name="SubcategoryName"
                                                     placeholder="Введите название подкатегории">	
                             </div>
 							
@@ -38,7 +38,7 @@
                                             <select class="form-control" name="CategoryId">
 												<option disabled selected>Выберите категорию</option>
 											@foreach($categories as $cat)
-                                            <option vale="{{$cat->id}}">{{$cat->name}}</option>
+                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
                                             @endforeach
 											</select>
                             </div>

@@ -21,7 +21,7 @@ class SubCategoryController extends Controller
         SubCategory::create([
             'name' => $request->SubcategoryName, 
             'category_id' => $request->CategoryId,
-            'desc' => ''
+            'desc' => 'test'
         ]);
 
         return redirect()->route('SubcatAdd');

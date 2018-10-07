@@ -186,8 +186,8 @@
                                 <a href="javascript:void(0);" class="waves-effect">
 								<i class="zmdi zmdi-local-offer"></i> <span> Промокоды </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="#">Добавить новый</a></li>
-									<li><a href="#">Список промокодов</a></li>
+                                    <li><a href="/coupon/add">Добавить новый</a></li>
+									<li><a href="/coupon/all">Список промокодов</a></li>
                                     
                                 </ul>
                             </li>
@@ -446,6 +446,10 @@
                 error: {
                     'fileSize': 'The file size is too big (1M max).'
                 }
+            });
+
+            $(function($) {
+                $('.autonumber').autoNumeric('init');
             });
 		  });
           

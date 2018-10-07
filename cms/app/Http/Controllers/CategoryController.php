@@ -18,7 +18,8 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
 		Category::create([
-			'name' => $request->nameCategory
+            
+			'name' => $request->CategoryName
 		]);
         return redirect()->route('CatAdd');
     }
