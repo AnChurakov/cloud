@@ -15,7 +15,7 @@ class SubCategoryController extends Controller
             'categories' => Category::all()->sortByDesc('name')
         ]);
     }
-
+    
     public function create(Request $request)
     {
         SubCategory::create([
