@@ -35,4 +35,10 @@ class ProductController extends Controller
 
         return redirect()->route('productAdd');
     }
+
+    public function single($id){
+        
+        return view('product.single', ['product' => Product::findOrFail($id)]);
+        
+    }
 }

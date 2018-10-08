@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('product/{id}', 'ProductController@add')->name('single');
 Route::get('product/add', 'ProductController@add')->name('productAdd');
 Route::post('product/create', 'ProductController@create');
 
