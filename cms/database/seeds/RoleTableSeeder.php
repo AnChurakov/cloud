@@ -1,5 +1,6 @@
 <?php
 
+use CMS\Role;
 use Illuminate\Database\Seeder;
 
 class RoleTableSeeder extends Seeder
@@ -11,6 +12,11 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Role::create([
+            'name' => 'admin'
+        ]);
+        Role::create([
+            'name' => 'user'
+        ]);
     }
 }

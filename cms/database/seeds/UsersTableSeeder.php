@@ -1,5 +1,6 @@
 <?php
 
+use CMS\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,8 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-
+        User::create([
             'name' => 'Антон',
             'lastname' => 'Чураков',
             'email' => 'test@mail.ru',
@@ -20,7 +20,6 @@ class UsersTableSeeder extends Seeder
             'phone' => '8 999 999 99 99',
             'address' => 'Izhevsk city, Lenin street',
             'role_id' => '1'
-
         ]);
     }
 }
