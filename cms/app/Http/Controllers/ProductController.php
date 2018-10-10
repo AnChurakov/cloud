@@ -74,4 +74,10 @@ class ProductController extends Controller
         Product::findOrFail($id)->delete();
         return redirect()->route('productAdd');
     }
+
+    public function single($id){
+        
+        return view('product.single', ['product' => Product::findOrFail($id)]);
+        
+    }
 }
