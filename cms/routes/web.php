@@ -35,7 +35,7 @@ Route::post('coupon/delete/{id}', 'CouponController@delete');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
