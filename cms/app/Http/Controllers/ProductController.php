@@ -3,11 +3,13 @@
 namespace CMS\Http\Controllers;
 
 use Validator;
+use Auth;
 use CMS\Product;
 use CMS\Category;
 use CMS\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
