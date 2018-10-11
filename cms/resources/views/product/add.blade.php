@@ -4,13 +4,7 @@
 <div class="row">
 							<div class="col-xl-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title float-left">Заказы</h4>
-
-                                    <ol class="breadcrumb float-right">
-                                        <li class="breadcrumb-item"><a href="#">Uplon</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Dashboard</li>
-                                    </ol>
+                                    <h4 class="page-title float-left">Добавление товара</h4>
 
                                     <div class="clearfix"></div>
                                 </div>
@@ -32,7 +26,8 @@
                                              <strong>Ошибка!</strong> Новый товар не добавлен! Проверьте, заполнили вы все поля
                                             </div>
 
-                        <form action='product/create' method='post'>			
+                        <form action='create' method='post'>
+                        @csrf			
 							<div class="form-group">
                                  <label>Название</label>
                                  <input type="text" class="form-control" id="ProductName"
