@@ -2,14 +2,15 @@
 
 namespace CMS\Http\Controllers;
 
+use Gate;
+use CMS\User;
 use Validator;
-use Auth;
 use CMS\Product;
 use CMS\Category;
 use CMS\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -19,6 +20,10 @@ class ProductController extends Controller
      * @return void
      */
     public function add() {
+
+        if (Auth::user()->cant('administrate', User::class)) {
+            abort(403, 'Вы не админ!');
+        }
 
         $Categories = Category::all()->sortByDesc('name');
         $Subcategory = SubCategory::all()->sortByDesc('name');
@@ -36,15 +41,13 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        if (Gate::allow('administrate', Auth::user())) {
-            abort(403, 'У вас нет прав на редактирование данного материала');
+        if (Auth::user()->cant('administrate', User::class)) {
+            abort(403, 'Вы не админ!');
         }
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'desc' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'subcategory_id' => 'required'
+            'ProductName' => 'required|max:255',
+            'Description' => 'required',
+            'Price' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -55,10 +58,10 @@ class ProductController extends Controller
 
         Product::create([
             'name' => $request->ProductName,
-            'desc' => $request->desc,
-            'price' => $request->price,
+            'desc' => $request->Description,
+            'price' => $request->Price,
             'category_id' => $request->category,
-            'subcategory_id' => $request->subCategory
+            'subcategory_id' => $request->subcategory
         ]);
 
         return redirect()->route('productAdd');
@@ -70,16 +73,16 @@ class ProductController extends Controller
      * @return void
      */
     public function delete($id) {
-        if (Gate::allow('administrate', Auth::user())) {
-            abort(403, 'У вас нет прав на редактирование данного материала');
+        if (Auth::user()->cant('administrate', User::class)) {
+            abort(403, 'Вы не админ!');
         }
         Product::findOrFail($id)->delete();
         return redirect()->route('productAdd');
     }
 
     public function single($id){
-        
-        return view('product.single', ['product' => Product::findOrFail($id)]);
-        
+        return view('product.single', [
+            'product' => Product::findOrFail($id)
+        ]);
     }
 }

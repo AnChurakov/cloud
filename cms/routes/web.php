@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('product/{id}', 'ProductController@add')->name('single');
-Route::get('product/add', 'ProductController@add')->name('productAdd');
-Route::post('product/create', 'ProductController@create');
-Route::post('product/{id}/delete', 'ProductController@delete');
+Route::get('product/add', 'ProductController@add')
+            ->name('productAdd')
+            ->middleware('auth');
+Route::get('product/{id}', 'ProductController@single')->name('single');
+Route::post('product/create', 'ProductController@create')
+            ->name('productCreate')
+            ->middleware('auth');
+Route::post('product/{id}/delete', 'ProductController@delete')
+            ->middleware('auth');;
 
 Route::get('category/add', 'CategoryController@add')->name('CatAdd');
 Route::get('category/all', 'CategoryController@all')->name('CatAll');
