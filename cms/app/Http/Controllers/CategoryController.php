@@ -26,19 +26,17 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        if (Gate::allow('administrate', Auth::user())) {
-            abort(403, 'У вас нет прав на редактирование данного материала');
-        }
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255'
         ]);
-        if ($category->fails()) {
-            return redirect('product/add')
+        if ($validator->fails()) {
+            return redirect('category/add')
                         ->withErrors($validator)
                         ->withInput();
         }
 		Category::create([
-			'name' => $request->CategoryName
+            'name' => $request->name,
+            'description' => $request->desc
         ]);
         
         return redirect()->route('CatAll');
@@ -62,9 +60,6 @@ class CategoryController extends Controller
      */
     public function delete($id)
     {
-        if (Gate::allow('administrate', Auth::user())) {
-            abort(403, 'У вас нет прав на редактирование данного материала');
-        }
         Category::findOrFail($id)
 					->delete();
         return redirect('CatAll');

@@ -30,9 +30,6 @@
                     <label>Название</label>
                     <input type="text" class="form-control{{ $errors->has('ProductName') ? ' is-invalid' : '' }}" id="ProductName"
                                     placeholder="Введите название товара" name="ProductName">
-                    <div class="invalid-tooltip">
-                        Please provide a valid city.
-                    </div>
                     @if ($errors->has('ProductName'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('ProductName') }}</strong>

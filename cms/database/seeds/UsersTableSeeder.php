@@ -21,5 +21,14 @@ class UsersTableSeeder extends Seeder
             'address' => 'Izhevsk city, Lenin street',
             'role_id' => '1'
         ]);
+        User::create([
+            'name' => 'User1',
+            'lastname' => 'User1Lastname',
+            'email' => 'user1@mail.ru',
+            'password' => bcrypt('user'),
+            'phone' => '8 999 999 99 99',
+            'address' => 'Izhevsk city, Lenin street',
+            'role_id' => '1'
+        ]);
     }
 }

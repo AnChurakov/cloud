@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class SubCategoryController extends Controller
 {
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function add()
     {
         return view('subcategory.add', [
@@ -26,18 +31,18 @@ class SubCategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'category_id' => 'required'
+            'CategoryId' => 'required'
         ]);
-        if ($category->fails()) {
+        if ($validator->fails()) {
             return redirect('subcategory/add')
                         ->withErrors($validator)
                         ->withInput();
         }
 
         SubCategory::create([
-            'name' => $request->SubcategoryName, 
+            'name' => $request->name, 
             'category_id' => $request->CategoryId,
-            'desc' => 'test'
+            'description' => $request->desc
         ]);
 
         return redirect()->route('SubcatAll');
