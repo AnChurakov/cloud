@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     /**
-     * Undocumented function
+     * Форма создания категории
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class CategoryController extends Controller
         return view('category.add');
     }
     /**
-     * Undocumented function
+     * Добавление в БД данных категории
      *
      * @param Request $request
      * @return void
@@ -42,7 +42,40 @@ class CategoryController extends Controller
         return redirect()->route('CatAll');
     }
     /**
-     * Undocumented function
+     * Форма редактирования категории
+     *
+     * @param int $id
+     * @return void
+     */
+    public function edit($id) {
+        return view('category.edit', [
+            'category' => Category::findOrFail($id)
+        ]);
+    }
+    /**
+     * Обновление данных категории в БД
+     *
+     * @param Request $request
+     * @param int $id
+     * @return void
+     */
+    public function update(Request $request, $id) {
+        $category = Category::findOrFail($id);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect('category/' . $category->id . '/edit')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $category->name = $request->name;
+        $category->desc = $request->desc;
+        $category->save();
+        return redirect('CatAll');
+    }
+    /**
+     * Страница со всеми категориями
      *
      * @return void
      */
@@ -53,9 +86,9 @@ class CategoryController extends Controller
         ]);
     }
     /**
-     * Undocumented function
+     * Удаление данных категории из БД
      *
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function delete($id)

@@ -26,12 +26,16 @@ Route::post('product/{id}/delete', 'ProductController@delete')
 /**
  * Маршруты категорий
  */
+Route::get('category/all', 'CategoryController@all')->name('CatAll');
 Route::get('category/add', 'CategoryController@add')
             ->name('CatAdd')
             ->middleware('auth', 'check.admin');
-Route::get('category/all', 'CategoryController@all')->name('CatAll');
+Route::get('category/edit/{category}', 'CategoryController@edit')
+            ->middleware('auth', 'check.admin');
 Route::post('category/create', 'CategoryController@create')
             ->name('createCat')
+            ->middleware('auth', 'check.admin');
+Route::post('category/update/{category}', 'CategoryController@update')
             ->middleware('auth', 'check.admin');
 Route::post('category/delete/{id}', 'CategoryController@delete')
             ->middleware('auth', 'check.admin');
