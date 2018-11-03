@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="page-title-box">
-            <h4 class="page-title float-left">Редактирование категории</h4>
+            <h4 class="page-title float-left">Добавление города</h4>
             <ol class="breadcrumb float-right">
                 <li class="breadcrumb-item"><a href="#">Uplon</a></li>
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -14,28 +14,22 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 <div class="row">
     <div class="col-7">
         <div class="card-box">
             <div class="col-12">
-                <form action="update/{{ $category->id }}" method="POST">
-                    @csrf
+                <form action="{{ route('city.store') }}" method="POST">
+                @csrf
                     <div class="form-group">
                         <label>Название</label>
-                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Введите название категории" value="{{ $category->name }}">
+                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Введите название города">
                         @if ($errors->has('name'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('name') }}</strong>
                             </span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label>Краткое описание</label>
-                        <textarea name="desc" id="categoryDesc" class="form-control" cols="30" rows="5" placeholder="Введите описание категории">{{ $category->desc }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">Сохранить</button>
-                    <a href="#" class="btn btn-primary">Отмена</a>
+                    <input type="submit" class="btn btn-sm btn-success" id="sub" value="Добавить">
                 </form>
             </div>
         </div>

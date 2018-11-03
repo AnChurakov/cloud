@@ -16,13 +16,13 @@
         <div class="card-box">
             <div class="col-12">
 
-                <div class="alert alert-success" role="alert">
+                {{-- <div class="alert alert-success" role="alert">
                     <strong>Отлично!</strong> Ваш новый товар успешно добавлен
                 </div>
 
             <div class="alert alert-danger" role="alert">
                 <strong>Ошибка!</strong> Новый товар не добавлен! Проверьте, заполнили вы все поля
-            </div>
+            </div> --}}
 
         <form action="{{ route('productCreate') }}" method="post" enctype="multipart/form-data">
             @csrf			

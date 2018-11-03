@@ -74,6 +74,15 @@ Route::post('coupon/create', 'CouponController@create')
 Route::post('coupon/delete/{id}', 'CouponController@delete')
             ->middleware('auth', 'check.admin');
 /**
+ * Маршруты городов
+ */
+Route::get('cities', 'CityController@all')->name('city.all');
+Route::get('city/add', 'CityController@add')->name('city.add');
+Route::post('city/store', 'CityController@store')->name('city.store');
+Route::get('city/{city}/edit', 'CityController@edit')->name('city.edit');
+Route::post('city/{city}/update', 'CityController@update')->name('city.update');
+Route::post('city/{city}/delete', 'CityController@delete')->name('city.delete');
+/**
  * Маршруты администрирования
  */
 Route::get('/admin', 'AdminController@index')

@@ -204,6 +204,15 @@
                                     
                                 </ul>
                             </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect">
+								<i class="zmdi zmdi-settings"></i> <span> Города </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('city.add') }}">Добавить</a></li>
+                                    <li><a href="{{ route('city.all') }}">Список</a></li>
+                                </ul>
+                            </li>
 							
 							<li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect">
