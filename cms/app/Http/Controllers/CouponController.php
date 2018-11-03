@@ -48,7 +48,7 @@ class CouponController extends Controller
             'status' => 'active'
         ]);
 
-        return redirect()->route('CouponAll');
+        return redirect()->route('CouponAll')->with('success', 'true');
     }
     /**
      * Undocumented function

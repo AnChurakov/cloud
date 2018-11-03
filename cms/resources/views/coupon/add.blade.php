@@ -21,7 +21,7 @@
 						
     	
                 
-                        <div class="row">
+                <div class="row">
                     <div class="col-7">
                         <div class="card-box">
                          <div class="col-12">

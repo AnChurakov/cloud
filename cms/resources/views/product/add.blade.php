@@ -16,14 +16,20 @@
         <div class="card-box">
             <div class="col-12">
 
-                <div class="alert alert-success" role="alert">
-                    <strong>Отлично!</strong> Ваш новый товар успешно добавлен
-                </div>
-
-            <div class="alert alert-danger" role="alert">
-                <strong>Ошибка!</strong> Новый товар не добавлен! Проверьте, заполнили вы все поля
+             
+        @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                <strong>Отлично!</strong> Ваш новый товар успешно добавлен
             </div>
+        @endif
+        
+        @if ($errors->any())
 
+        <div class="alert alert-danger" role="alert">
+            <strong>Ошибка!</strong> Новый товар не добавлен! Проверьте, вы заполнили все поля или нет
+        </div>
+        @endif
+       
         <form action="{{ route('productCreate') }}" method="post" enctype="multipart/form-data">
             @csrf			
             <div class="form-group">
@@ -42,7 +48,7 @@
                 <label for="inlineRadio1"> Категорию </label>
             </div>
             <div class="radio radio-inline radio-info">
-                <input type="radio" id="inlineRadio2" value="subcategory" name="subcategoryRadio">
+                <input type="radio" id="inlineRadio2" value="subcategory" name="categoryRadio">
                 <label for="inlineRadio2"> Подкатегорию </label>
             </div>
             <div class="form-group" id="showCategory">

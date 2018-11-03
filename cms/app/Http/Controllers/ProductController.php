@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function add() {
 
         if (Auth::user()->cant('administrate', User::class)) {
-            abort(403, 'Вы не админ!');
+            abort(403, 'Вы не администратор!');
         }
 
         $Categories = Category::all()->sortByDesc('name');
@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         if (Auth::user()->cant('administrate', User::class)) {
-            abort(403, 'Вы не админ!');
+            abort(403, 'Вы не администратор!');
         }
         $validator = Validator::make($request->all(), [
             'ProductName' => 'required|max:255',
@@ -64,7 +64,7 @@ class ProductController extends Controller
             'subcategory_id' => $request->subcategory
         ]);
 
-        return redirect()->route('productAdd');
+        return redirect()->route('productAdd')->with('success', 'true');
     }
     /**
      * Undocumented function
@@ -74,7 +74,7 @@ class ProductController extends Controller
      */
     public function delete($id) {
         if (Auth::user()->cant('administrate', User::class)) {
-            abort(403, 'Вы не админ!');
+            abort(403, 'Вы не администратор!');
         }
         Product::findOrFail($id)->delete();
         return redirect()->route('productAdd');

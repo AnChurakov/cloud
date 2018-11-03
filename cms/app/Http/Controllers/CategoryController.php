@@ -29,17 +29,19 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255'
         ]);
+
         if ($validator->fails()) {
             return redirect('category/add')
                         ->withErrors($validator)
                         ->withInput();
         }
+        
 		Category::create([
             'name' => $request->name,
             'description' => $request->desc
         ]);
         
-        return redirect()->route('CatAll');
+        return redirect()->route('CatAdd')->with('success', 'true');
     }
     /**
      * Форма редактирования категории
@@ -48,9 +50,11 @@ class CategoryController extends Controller
      * @return void
      */
     public function edit($id) {
+
         return view('category.edit', [
             'category' => Category::findOrFail($id)
         ]);
+
     }
     /**
      * Обновление данных категории в БД
@@ -60,18 +64,23 @@ class CategoryController extends Controller
      * @return void
      */
     public function update(Request $request, $id) {
+
         $category = Category::findOrFail($id);
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255'
         ]);
+
         if ($validator->fails()) {
             return redirect('category/' . $category->id . '/edit')
                         ->withErrors($validator)
                         ->withInput();
         }
+
         $category->name = $request->name;
         $category->desc = $request->desc;
         $category->save();
+
         return redirect('CatAll');
     }
     /**
@@ -94,7 +103,8 @@ class CategoryController extends Controller
     public function delete($id)
     {
         Category::findOrFail($id)
-					->delete();
+                    ->delete();
+                    
         return redirect('CatAll');
     }
 }
