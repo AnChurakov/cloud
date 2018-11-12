@@ -19,6 +19,20 @@
     <div class="col-7">
         <div class="card-box">
             <div class="col-12">
+
+        @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            <strong>Отлично!</strong> Новая категория успешно добавлена
+        </div>
+        @endif
+        
+        @if ($errors->any())
+
+        <div class="alert alert-danger" role="alert">
+            <strong>Ошибка!</strong> Новая категория не добавлена! Проверьте, вы заполнили все поля или нет
+        </div>
+        @endif
+
                 <form action="create" method="POST">
                 @csrf
                     <div class="form-group">

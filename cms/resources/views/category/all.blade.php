@@ -29,12 +29,12 @@
                 <tbody>
                     @foreach ($categories as $cat)
                         <tr>
-                            <th><a href="#">{{$cat->name}}</a></th>
+                            <th>{{$cat->name}}</th>
                             <td><span class="label label-success">{{$cat->products->count()}}</span></td>
                             <td><a href="/category/edit/{{ $cat->id }}" class="btn btn-warning btn-sm">Редактировать</a></td>
                             <td>
                                 <a href="#" class="btn btn-danger btn-sm" onclick="document.getElementById('delete-category').submit()">Удалить</a>
-                                <form id="delete-category" action="category/delete/{{$cat->id}}" method="post">
+                                <form id="delete-category" action="/category/delete/{{$cat->id}}" method="post">
                                     @csrf
                                 </form>
                             </td>

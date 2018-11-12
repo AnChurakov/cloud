@@ -1,134 +1,49 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="row">
-							<div class="col-xl-12">
-								<div class="page-title-box">
-                                    <h4 class="page-title float-left">Заказы</h4>
 
-                                    <ol class="breadcrumb float-right">
-                                        <li class="breadcrumb-item"><a href="#">Uplon</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Dashboard</li>
-                                    </ol>
-
-                                    <div class="clearfix"></div>
-                                </div>
-							</div>
-						</div>
-
-
-
-
-                 <div class="row">
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="icon-layers float-right text-muted"></i>
-                            <h6 class="text-muted text-uppercase m-b-20">Всего заказов</h6>
-                            <h2 class="m-b-20" data-plugin="counterup">1,587</h2>
-                            
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="icon-paypal float-right text-muted"></i>
-                            <h6 class="text-muted text-uppercase m-b-20">Сумма</h6>
-                            <h2 class="m-b-20"><span data-plugin="counterup">46,782</span>&#8381</h2>
-                            
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="icon-chart float-right text-muted"></i>
-                            <h6 class="text-muted text-uppercase m-b-20">Стоимость</h6>
-                            <h2 class="m-b-20"><span data-plugin="counterup">15.9</span>&#8381</h2>
-                            
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="icon-rocket float-right text-muted"></i>
-                            <h6 class="text-muted text-uppercase m-b-20">Продано</h6>
-                            <h2 class="m-b-20" data-plugin="counterup">1,890</h2>
-                            
-                        </div>
-                    </div>
+<div class="page has-sidebar-left height-full">
+    <header class="blue accent-3 relative nav-sticky">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        <i class="icon-box"></i>
+                        Панель управления
+                    </h4>
                 </div>
-
-	<div class="row">
-                    <div class="col-12">
-                        <div class="card-box table-responsive">
-                            <h4 class="m-t-0 header-title">Последние заказы</h4>
-                            
-
-                            <table id="responsive-datatable" class="table table-borderless table-hover dt-responsive nowrap" cellspacing="0" width="100%">
-                                <thead>
-                                  <tr>
-                                    <th>№</th>
-                                    <th>Пользователь</th>
-                                    <th>Адрес</th>
-									<th>Телефон</th>
-									<th>Дата</th>
-									<th>Статус</th>
-                                    <th>Стоимость</th>
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                <tr>
-                                    <td><a href="#"><strong>1111</strong></a></td>
-                                    <td>Вольхин Сергей Дмитриевич</td>
-                                    <td>г. Ижевск, ул. Ленина 68, 426000</td>
-									<td>8 999 999 99 99</td>
-									<td>1.10.18</td>
-									<td><span class="label label-success">Оплачен</span></td>
-									<td>500</td>
-                                    <td><a href="#" class="btn btn-sm btn-danger">Удалить</a></td>                                    
-                                </tr>
-							  <tr>
-                                    <td><a href="#"><strong>1111</strong></a></td>
-                                    <td>Вольхин Сергей Дмитриевич</td>
-                                    <td>г. Ижевск, ул. Ленина 68, 426000</td>
-									<td>8 999 999 99 99</td>
-									<td>1.10.18</td>
-									<td><span class="label label-success">Оплачен</span></td>
-									<td>500</td>
-                                    <td><a href="#" class="btn btn-sm btn-danger">Удалить</a></td>                                    
-                                </tr>
-							
-							  <tr>
-                                    <td><a href="#"><strong>1111</strong></a></td>
-                                    <td>Вольхин Сергей Дмитриевич</td>
-                                    <td>г. Ижевск, ул. Ленина 68, 426000</td>
-									<td>8 999 999 99 99</td>
-									<td>1.10.18</td>
-									<td><span class="label label-success">Оплачен</span></td>
-									<td>500</td>
-                                    <td><a href="#" class="btn btn-sm btn-danger">Удалить</a></td>                                    
-                                </tr>
-							
-							  <tr>
-                                    <td><a href="#"><strong>1111</strong></a></td>
-                                    <td>Вольхин Сергей Дмитриевич</td>
-                                    <td>г. Ижевск, ул. Ленина 68, 426000</td>
-									<td>8 999 999 99 99</td>
-									<td>1.10.18</td>
-									<td><span class="label label-success">Оплачен</span></td>
-									<td>500</td>
-                                    <td><a href="#" class="btn btn-sm btn-danger">Удалить</a></td>                                    
-                                </tr>
-							
-								
-               
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-				
+            </div>
+            <!--<div class="row">
+                <ul class="nav responsive-tab nav-material nav-material-white" id="v-pills-tab">
+                    <li>
+                        <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1">
+                            <i class="icon icon-home2"></i>Today</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"><i class="icon icon-plus-circle mb-3"></i>Yesterday</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3"><i class="icon icon-calendar"></i>By Date</a>
+                    </li>
+                </ul>
+                
+            </div>-->
+        </div>
+    </header>
+    <div class="container-fluid relative animatedParent animateOnce">
+        <div class="tab-content pb-3" id="v-pills-tabContent">
+          
+            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-1">
+              
+            
+                
+            </div>
+          
+            
+           
+          
+        </div>
+    </div>
+</div>
 
 @endsection
