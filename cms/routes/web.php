@@ -17,7 +17,13 @@
 Route::get('product/add', 'ProductController@add')
             ->name('productAdd')
             ->middleware('auth', 'check.admin');
+
 Route::get('product/{id}', 'ProductController@single')->name('single');
+
+Route::get('product/all', 'ProductController@all')
+            ->name('productAll')
+            ->middleware('auth', 'check.admin');
+
 Route::post('product/create', 'ProductController@create')
             ->name('productCreate')
             ->middleware('auth', 'check.admin');

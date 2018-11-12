@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+
+    /**
+     * Вывод всех товаров
+     *
+     * @return void
+     */
+    public function all() {
+
+        if (Auth::user()->cant('administrate', User::class)) {
+            abort(403, 'Вы не администратор!');
+        }
+
+        $products = Product::all()->sortByDesc('created_at');
+
+        return view('product.all', [
+            'products' => $products
+        ]);
+    }
+
     /**
      * Форма добавления товара
      *
