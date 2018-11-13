@@ -30,4 +30,7 @@ class Product extends Model
     public function subCategory() {
         return $this->belongsTo('CMS\SubCategory');
     }
+    public function coupons() {
+        return $this->hasMany('CMS\Coupon');
+    }
 }

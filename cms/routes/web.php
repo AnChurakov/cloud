@@ -93,10 +93,11 @@ Route::get('coupon/add', 'CouponController@add')
             ->middleware('auth', 'check.admin');
 
 Route::post('coupon/create', 'CouponController@create')
-            ->name('createCoupon')
+            ->name('coupon.create')
             ->middleware('auth', 'check.admin');
 
 Route::post('coupon/delete/{id}', 'CouponController@delete')
+            ->name('coupon.delete')
             ->middleware('auth', 'check.admin');
 /**
  * Маршруты администрирования

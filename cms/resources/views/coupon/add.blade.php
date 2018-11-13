@@ -29,98 +29,89 @@
     </header>
     <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
-           
                 <div class="row">
                     <div class="col-md-8 ">
-
                         @if (session()->has('success'))
                             <div class="alert alert-success" role="alert">
                                 Новый промокод успешно добавлен
                             </div>
                         @endif
-                        
                         @if ($errors->any())
                             <div class="alert alert-danger" role="alert">
                                 <strong>Ошибка!</strong> Промокод не добавлен! Проверьте, вы заполнили все поля или нет
                             </div>
                         @endif
-
                         <div class="card">
                             <div class="card-header white">
                                 <strong>Добавление нового промокода</strong>
                             </div>
                                 <div class="card-body b-b">
-                                    <form action="create" method="POST">
-                                        @csrf                            
-
+                                    <form action="{{ route('coupon.create') }}" method="POST">
+                                        @csrf
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Название</label>
                                                     <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                         placeholder="Введите название">
                                                 </div>
-                                                
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Значение</label>
                                                     <input type="text" name="procent" class="form-control"
                                                         placeholder="Введите значение">
                                                 </div>
-                                                
                                             </div>
-
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label>Значение</label>
+                                                    <input type="date" name="date" class="form-control"
+                                                        placeholder="Выберите дату">
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Категория</label>
                                                     <select class="form-control" name="catId">
-                                                        <option value="" selected disable>Выберте категорию</option>
+                                                        <option value="#" selected disable>Выберте категорию</option>
                                                         @foreach ($categories as $cat)
                                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Подкатегория</label>
                                                     <select class="form-control" name="subcatId">
-                                                    <option value="" selected disable>Выберте подкатегорию</option>
+                                                    <option value="#" selected disable>Выберте подкатегорию</option>
                                                         @foreach ($subcategories as $subcat)
                                                             <option value="{{$subcat->id}}">{{$subcat->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                
-                                            </div>                                
-                                            
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Статус</label>
                                                     <select class="form-control" name="status">
-                                                    <option selected disable>Выберте статус</option>
-                                                    <option value="activecode">Активирован</option>
-                                                    <option value="noactivecode">Неактивирован</option>
+                                                        <option value="#" selected disable>Выберте статус</option>
+                                                        <option value="activecode">Активирован</option>
+                                                        <option value="noactivecode">Неактивирован</option>
                                                     </select>
                                                 </div>
-                                                
                                             </div>
-
-
                                         <input class="btn btn-primary mt-4" id="sub" type="submit" value="Добавить промокод"> 
                                     </form>
-                            </div>                            
-                    </div>
-                 </div>                   
-            </div>            
+                                </div>                            
+                            </div>
+                        </div>                   
+                    </div>            
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-       <!--         <div class="row">
+       {{-- <div class="row">
                     <div class="col-7">
                         <div class="card-box">
                          <div class="col-12">
@@ -148,6 +139,6 @@
                           
                         </div>
                     </div>
-                </div> -->
+                </div> --}}
 				
 @endsection
