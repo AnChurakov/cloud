@@ -134,7 +134,7 @@
             </a>                
             </li>
 
-            <li class="treeview"><a href="/coupon/all"><i class="icon icon-account_box light-green-text s-18"></i>Промокоды</a>               
+            <li class="treeview"><a href="{{ route('coupons') }}"><i class="icon icon-account_box light-green-text s-18"></i>Промокоды</a>               
             </li>
 
             <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Пользователи</a>
