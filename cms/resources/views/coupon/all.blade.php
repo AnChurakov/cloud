@@ -1,56 +1,113 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="row">
-							<div class="col-xl-12">
-								<div class="page-title-box">
-                                    <h4 class="page-title float-left">Промокоды</h4>
+<div class="page has-sidebar-left height-full">
+    <header class="blue accent-3 relative nav-sticky">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        <i class="icon-package"></i>
+                        Промокоды
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <ul class="nav responsive-tab nav-material nav-material-white">
+                    <li>
+                        <a class="nav-link active" href="/coupon/all"><i class="icon icon-list"></i>Все промокоды</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/coupon/add"><i
+                                class="icon icon-plus-circle"></i>Добавить новый промокод</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </header>
+    @if ($coupons->count() != 0)
+    <div class="container-fluid animatedParent animateOnce">
+        <div class="tab-content my-3" id="v-pills-tabContent">
+            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <div class="card r-0 shadow">
+                            <div class="table-responsive">
+                                <form>
+                                    <table class="table table-striped table-hover r-0">
+                                        <thead>
+                                        <tr class="no-b">
+                                            <th style="width: 30px">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" id="checkedAll" class="custom-control-input"><label
+                                                        class="custom-control-label" for="checkedAll"></label>
+                                                </div>
+                                            </th>
+                                            <th>Название</th>
+                                            <th>Описание</th>
+                                            <th>Категория</th>
+                                            <th>Количество товара</th>                                         
+                                            <th>Статус</th>                                            
+                                            <th></th>
+                                        </tr>
+                                        </thead>
 
-                                    <ol class="breadcrumb float-right">
-                                        <li class="breadcrumb-item"><a href="#">Uplon</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Dashboard</li>
-                                    </ol>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input checkSingle"
+                                                           id="user_id_1" required><label
+                                                        class="custom-control-label" for="user_id_1"></label>
+                                                </div>
+                                            </td>
 
-                                    <div class="clearfix"></div>
-                                </div>
-							</div>
-						</div>
-<div class="row">
-                    <div class="col-12">
-                        <div class="card-box table-responsive">
-                   
-				   
-				      <table class="table table-borderless table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Название</th>
-                                    <th>Дата окончания</th>
-									<th>Статус</th>
-									<th></th>
-									<th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @forelse ($coupons as $coupon)
-                                <tr>
-                                    <th>{{$coupon->name}}</th>
-                                    <td><span class="label label-primary">{{$coupon->date}}</span></td>
-									<td><span class="label label-success">{{$coupon->status}}</span></td>
-									<td><a href="#" class="btn btn-warning btn-sm">Редактировать</a></td>
-                                    <td><a href="delete/{{$coupon->id}}" class="btn btn-danger btn-sm">Удалить</a></td>
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td>Промокодов нет</td>
-                                </tr>
-                                @endforelse
+                                            <td>                                             
+                                                <strong></strong>
+                                            </td>
 
-                                </tbody>
-                            </table>
+                                            <td>
+                                              
+                                            </td>
 
-                          
+                                            <td>
+                                               
+                                            </td>
+
+                                            <td>2</td>         
+                                                                             
+                                            <td><span class="icon icon-circle s-12  mr-2 text-warning"></span> Inactive</td>
+                                            
+                                            <td>                                                
+                                                <a href="#" class="h4 text-primary"><i class="icon-pencil mr-3"></i></a>
+                                                <a href="delete/{{$prod->id}}" class="h4 text-danger"><i class="icon-close"></i></a>           
+                                            </td>
+                                        </tr>                                       
+                                       
+                                      
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div> <!-- end row -->
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+    @else
+    <div class="container-fluid pt-5">
+        <div class="text-center p-5">
+            <i class="icon-note-important s-64 text-primary"></i>
+            <h4 class="my-3">В данный момент промокодов нет</h4>
+            <p>У вас не добавлены промокоды. Вы можете добавить первый промокод прямо сейчас</p>
+            <a href="/coupon/add" class="btn btn-primary shadow btn-lg"><i class="icon-plus-circle mr-2 "></i>Добавить</a>
+        </div>
+    </div>
+    @endif
+</div>
 @endsection

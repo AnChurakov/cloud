@@ -5,6 +5,8 @@ namespace CMS\Http\Controllers;
 use Gate;
 use Validator;
 use CMS\Coupon;
+use CMS\Category;
+use CMS\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,10 @@ class CouponController extends Controller
      * @return void
      */
     public function add(){
-        return view('coupon.add');
+        return view('coupon.add', [
+            'categories' => Category::all(),
+            'subcategories' => SubCategory::all()
+        ]);
     }
     /**
      * Undocumented function
@@ -27,28 +32,30 @@ class CouponController extends Controller
      */
     public function create(Request $request){
 
-        if (Gate::allow('administrate', Auth::user())) {
-            abort(403, 'У вас нет прав на редактирование данного материала');
-        }
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'procent' => 'required',
             'date' => 'required|date',
             'status' => 'required',
         ]);
-        if ($category->fails()) {
+        
+        if ($validator->fails()) {
             return redirect('coupon/add')
                         ->withErrors($validator)
                         ->withInput();
         }
+
         Coupon::create([
-            'name' => $request->couponName,
-            'procent' => $request->procentCoupon,
+            'name' => $request->name,
+            'procent' => $request->procent,
             'date' => Carbon::now(),
-            'status' => 'active'
+            'status' => $request->status,
+            'category_id' => $request->catId,
+            'subcategory_id' => $request->subcatId
         ]);
 
-        return redirect()->route('CouponAll')->with('success', 'true');
+        return redirect()->route('CouponAdd')->with('success', 'true');
     }
     /**
      * Undocumented function

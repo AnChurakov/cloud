@@ -100,19 +100,16 @@
                     </div>
                     <div class="float-left info">
                         <h6 class="font-weight-light mt-2 mb-1">Alexander Pierce</h6>
-                        <a href="#"><i class="icon-circle text-primary blink"></i> Online</a>
+                        <a href="#"><i class="icon-circle text-success blink"></i> Online</a>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="collapse multi-collapse" id="userSettingsCollapse">
-                    <div class="list-group mt-3 shadow">
-                        <a href="index.html" class="list-group-item list-group-item-action ">
-                            <i class="mr-2 icon-umbrella text-blue"></i>Profile
+                    <div class="list-group mt-3 ">
+                        <a href="#" class="list-group-item list-group-item-action ">
+                            <i class="mr-2 icon-umbrella text-blue"></i>Мой профиль
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action"><i
-                                class="mr-2 icon-cogs text-yellow"></i>Settings</a>
-                        <a href="#" class="list-group-item list-group-item-action"><i
-                                class="mr-2 icon-security text-purple"></i>Change Password</a>
+                        
                     </div>
                 </div>
             </div>
@@ -128,45 +125,20 @@
                 <span>Товары</span>
                 
             </a> </li>
-            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Категории
-            <i class="icon icon-angle-left s-18 pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>Добавить категорию</a>
-                    </li>
-                    <li><a href="panel-page-users-create.html"><i class="icon icon-add"></i>Список категорий</a>
-                    </li>
-                    
-                </ul>
+
+            <li class="treeview"><a href="/category/all"><i class="icon icon-account_box light-green-text s-18"></i>Категории
+            </i></a>            
             </li>
-            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Подкатегории
-            <i class="icon icon-angle-left s-18 pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>Добавить подкатегорию</a>
-                    </li>
-                    <li><a href="panel-page-users-create.html"><i class="icon icon-add"></i>Список подкатегорий</a>
-                    </li>
-                    
-                </ul>
+
+            <li class="treeview"><a href="/subcategory/all"><i class="icon icon-account_box light-green-text s-18"></i>Подкатегории
+            </a>                
             </li>
-            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Промокоды
-            <i class="icon icon-angle-left s-18 pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>Добавить промокод</a>
-                    </li>
-                    <li><a href="panel-page-users-create.html"><i class="icon icon-add"></i>Список промокодов</a>
-                    </li>
-                    
-                </ul>
+
+            <li class="treeview"><a href="/coupon/all"><i class="icon icon-account_box light-green-text s-18"></i>Промокоды</a>               
             </li>
-            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Пользователи<i
-                    class="icon icon-angle-left s-18 pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>Все пользователи</a>
-                    </li>
-                    <li><a href="panel-page-users-create.html"><i class="icon icon-add"></i>Добавить пользователя</a>
-                    </li>
-                    
-                </ul>
+
+            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Пользователи</a>
+                
             </li>
             
            
@@ -238,13 +210,14 @@
             </a>
         </li>
        
-        <!-- User Account-->
+        
         <li class="dropdown custom-dropdown user user-menu ">
-            <a href="#" class="nav-link" data-toggle="dropdown">
-                
+            <a href="#" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Выход из кабинета" onclick="document.getElementById('logOut').submit()" data-toggle="dropdown">
                 <i class="icon-exit_to_app"></i>
             </a>
-            
+            <form id="logOut" style="display:none;" action="{{route ('logout')}}" method="POST">
+                @csrf
+            </form>
         </li>
     </ul>
 </div>

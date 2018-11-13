@@ -48,6 +48,42 @@ class SubCategoryController extends Controller
         return redirect()->route('SubcatAll');
     }
 
+    public function edit(Request $request, $id)
+    {
+        return view('subcategory.edit', [
+            'category' => Category::all(),
+            'subcategory' => SubCategory::findOrfail($id)
+        ]);
+    }
+    /**
+     * Обновление данных подкатегории в БД
+     *
+     * @param Request $request
+     * @param int $id
+     * @return void
+     */
+    public function update(Request $request, $id) {
+
+        $subcategory = SubCategory::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('subcategory/edit/'. $category->id)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $subcategory->name = $request->name;
+        $subcategory->description = $request->desc;
+        $subcategory->category_id = $request->categoryId;
+        $subcategory->save();
+
+        return redirect('subcategory/edit/'.$subcategory->id)->with('success', 'true');
+    }
+
     public function all()
     {
         return view('subcategory.all', [

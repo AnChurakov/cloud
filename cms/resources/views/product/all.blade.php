@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="page has-sidebar-left height-full">
     <header class="blue accent-3 relative nav-sticky">
         <div class="container-fluid text-white">
@@ -9,7 +10,7 @@
                 <div class="col">
                     <h4>
                         <i class="icon-package"></i>
-                        Все товары
+                        Товары
                     </h4>
                 </div>
             </div>
@@ -22,153 +23,97 @@
                         <a class="nav-link" href="/product/add"><i
                                 class="icon icon-plus-circle"></i>Добавить новый товар</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="panel-page-products.html#"><i class="icon icon-trash-can"></i>В корзине</a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
     </header>
-    <div class="container-fluid animatedParent animateOnce my-3">
-        <div class="animated fadeInUpShort">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card no-b shadow">
-                        <div class="card-body p-0">
+    @if ($products->count() != 0)
+    <div class="container-fluid animatedParent animateOnce">
+        <div class="tab-content my-3" id="v-pills-tabContent">
+            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <div class="card r-0 shadow">
                             <div class="table-responsive">
-                                <table class="table table-hover ">
-                                    <tbody>
-                                    <tr class="no-b">
-                                        <td class="w-10">
-                                            <img src="assets/img/demo/shop/s1.png" alt="">
-                                        </td>
-                                        <td>
-                                            <h6>Apple Product</h6>
-                                            <small class="text-muted">Mobile Phones</small>
-                                        </td>
-                                        <td>$250</td>
-                                        <td><span class="badge badge-success">Published</span></td>
-                                        <td>
-                                            <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                            <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-10">
-                                            <img src="assets/img/demo/shop/s2.png" alt="">
-                                        </td>
-                                        <td>
-                                            <h6>Apple Product</h6>
-                                            <small class="text-muted">Mobile Phones</small>
-                                        </td>
-                                        <td>$250</td>
-                                        <td><span class="badge badge-success">Published</span></td>
-                                        <td>
-                                            <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                            <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-10">
-                                            <img src="assets/img/demo/shop/s3.png" alt="">
-                                        </td>
-                                        <td>
-                                            <h6>Apple Product</h6>
-                                            <small class="text-muted">Mobile Phones</small>
-                                        </td>
-                                        <td>$250</td>
-                                        <td><span class="badge badge-danger">Pending</span></td>
-                                        <td>
-                                            <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                            <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-10">
-                                            <img src="assets/img/demo/shop/s4.png" alt="">
-                                        </td>
-                                        <td>
-                                            <h6>Apple Product</h6>
-                                            <small class="text-muted">Mobile Phones</small>
-                                        </td>
-                                        <td>$250</td>
-                                        <td><span class="badge badge-success">Published</span></td>
-                                        <td>
-                                            <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                            <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-10">
-                                            <img src="assets/img/demo/shop/s5.png" alt="">
-                                        </td>
-                                        <td>
-                                            <h6>Apple Product</h6>
-                                            <small class="text-muted">Mobile Phones</small>
-                                        </td>
-                                        <td>$250</td>
-                                        <td><span class="badge badge-primary">Sold Out</span></td>
-                                        <td>
-                                            <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                            <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-10">
-                                            <img src="assets/img/demo/shop/s6.png" alt="">
-                                        </td>
-                                        <td>
-                                            <h6>Apple Product</h6>
-                                            <small class="text-muted">Mobile Phones</small>
-                                        </td>
-                                        <td>$250</td>
-                                        <td><span class="badge badge-warning">Low Stock</span></td>
-                                        <td>
-                                            <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                            <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <form>
+                                    <table class="table table-striped table-hover r-0">
+                                        <thead>
+                                        <tr class="no-b">
+                                            <th style="width: 30px">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" id="checkedAll" class="custom-control-input"><label
+                                                        class="custom-control-label" for="checkedAll"></label>
+                                                </div>
+                                            </th>
+                                            <th>Название</th>
+                                            <th>Описание</th>
+                                            <th>Категория</th>
+                                            <th>Количество товара</th>                                         
+                                            <th>Статус</th>                                            
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach ($products as $prod)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input checkSingle"
+                                                           id="user_id_1" required><label
+                                                        class="custom-control-label" for="user_id_1"></label>
+                                                </div>
+                                            </td>
+
+                                            <td>                                             
+                                                <strong>{{$prod->name}}</strong>
+                                            </td>
+
+                                            <td>
+                                               @empty(!$prod->description)
+                                                    {{$prod->description}}
+                                               @else
+                                                    Описания нет
+                                               @endempty
+                                            </td>
+
+                                            <td>
+                                                {{$prod->category->name}}
+                                            </td>
+
+                                            <td>2</td>         
+                                                                             
+                                            <td><span class="icon icon-circle s-12  mr-2 text-warning"></span> Inactive</td>
+                                            
+                                            <td>                                                
+                                                <a href="#" class="h4 text-primary"><i class="icon-pencil mr-3"></i></a>
+                                                <a href="delete/{{$prod->id}}" class="h4 text-danger"><i class="icon-close"></i></a>           
+                                            </td>
+                                        </tr>                                       
+                                       
+                                      @endforeach
+                                        </tbody>
+                                    </table>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-            <nav class="pt-3" aria-label="Page navigation">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="panel-page-products.html#">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="panel-page-products.html#">1</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="panel-page-products.html#">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="panel-page-products.html#">3</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="panel-page-products.html#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            
         </div>
     </div>
+    @else
+    <div class="container-fluid pt-5">
+        <div class="text-center p-5">
+            <i class="icon-note-important s-64 text-primary"></i>
+            <h4 class="my-3">В данный момент товаров нет</h4>
+            <p>У вас не добавлены товары. Вы можете добавить первый товар прямо сейчас</p>
+            <a href="/product/add" class="btn btn-primary shadow btn-lg"><i class="icon-plus-circle mr-2 "></i>Добавить товар</a>
+        </div>
+    </div>
+    @endif
 </div>
-
 @endsection

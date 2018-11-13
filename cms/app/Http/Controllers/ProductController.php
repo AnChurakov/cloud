@@ -3,11 +3,11 @@
 namespace CMS\Http\Controllers;
 
 use Gate;
-use CMS\User;
 use Validator;
 use CMS\Product;
 use CMS\Category;
 use CMS\SubCategory;
+use CMS\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -15,24 +15,23 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
 
-    /**
-     * Вывод всех товаров
-     *
-     * @return void
-     */
     public function all() {
 
         if (Auth::user()->cant('administrate', User::class)) {
             abort(403, 'Вы не администратор!');
         }
 
+        $Categories = Category::all()->sortByDesc('name');
+        $Subcategory = SubCategory::all()->sortByDesc('name');
         $products = Product::all()->sortByDesc('created_at');
 
         return view('product.all', [
+            'category' => $Categories, 
+            'subcategory' => $Subcategory,
             'products' => $products
         ]);
     }
-
+    
     /**
      * Форма добавления товара
      *
@@ -77,10 +76,11 @@ class ProductController extends Controller
 
         Product::create([
             'name' => $request->ProductName,
-            'desc' => $request->Description,
+            'description' => $request->Description,
             'price' => $request->Price,
             'category_id' => $request->category,
-            'subcategory_id' => $request->subcategory
+            'subcategory_id' => $request->subcategory,
+            'vendorcode' => $request->vendorcode
         ]);
 
         return redirect()->route('productAdd')->with('success', 'true');
@@ -96,7 +96,7 @@ class ProductController extends Controller
             abort(403, 'Вы не администратор!');
         }
         Product::findOrFail($id)->delete();
-        return redirect()->route('productAdd');
+        return redirect()->route('productAll');
     }
 
     public function single($id){

@@ -72,16 +72,16 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('category/' . $category->id . '/edit')
+            return redirect('category/edit/'. $category->id)
                         ->withErrors($validator)
                         ->withInput();
         }
 
         $category->name = $request->name;
-        $category->desc = $request->desc;
+        $category->description = $request->desc;
         $category->save();
 
-        return redirect('CatAll');
+        return redirect('category/edit/'.$category->id)->with('success', 'true');
     }
     /**
      * Страница со всеми категориями
@@ -100,11 +100,11 @@ class CategoryController extends Controller
      * @param int $id
      * @return void
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         Category::findOrFail($id)
                     ->delete();
                     
-        return redirect('CatAll');
+        return redirect()->route('CatAll');
     }
 }

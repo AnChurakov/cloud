@@ -10,18 +10,18 @@
                 <div class="col">
                     <h4>
                         <i class="icon-package"></i>
-                        Категория - {{$category->name}}
+                        Подкатегория - {{$subcategory->name}}
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <ul class="nav responsive-tab nav-material nav-material-white">
                     <li>
-                        <a class="nav-link " href="/category/all"><i class="icon icon-list"></i>Все категории</a>
+                        <a class="nav-link " href="/subcategory/all"><i class="icon icon-list"></i>Все подкатегории</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/category/add"><i
-                                class="icon icon-plus-circle"></i>Добавить новую категорию</a>
+                        <a class="nav-link" href="/subcategory/add"><i
+                                class="icon icon-plus-circle"></i>Добавить новую подкатегорию</a>
                     </li>
                    
                 </ul>
@@ -36,37 +36,49 @@
 
                         @if (session()->has('success'))
                             <div class="alert alert-success" role="alert">
-                                Категория успешно изменена
+                                Подкатегория успешно изменена
                             </div>
                         @endif
                         
                         @if ($errors->any())
                             <div class="alert alert-danger" role="alert">
-                                <strong>Ошибка!</strong> Категория не изменена! Проверьте, вы заполнили все поля или нет
+                                <strong>Ошибка!</strong> Подкатегория не изменена! Проверьте, вы заполнили все поля или нет
                             </div>
                         @endif
 
                         <div class="card">
                             <div class="card-header white">
-                                <strong>Редактирование категории</strong>
+                                <strong>Редактирование подкатегории</strong>
                             </div>
                                 <div class="card-body b-b">
-                                    <form action="/category/update/{{$category->id}}" method="POST">
+                                    <form action="/subcategory/update/{{$subcategory->id}}" method="POST">
                                         @csrf                            
 
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Название</label>
                                                     <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                                        placeholder="{{$category->name}}" >
+                                                        placeholder="{{$subcategory->name}}" >
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label>Категория</label>
+                                                    <select class="form-control" name="categoryId">
+                                                        @foreach($category as $cat)
+                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 
                                             </div>
                                 
                                             <div class="form-group">
-                                                <label >Описание категории</label>
+                                                <label >Описание подкатегории</label>
                                                 <textarea name="desc" class="form-control p-t-40 editor" id="categoryDesc"
-                                                        placeholder="{{$category->description}}" rows="17"></textarea>
+                                                        placeholder="{{$subcategory->description}}" rows="17"></textarea>
                                                 
                                             </div>
 

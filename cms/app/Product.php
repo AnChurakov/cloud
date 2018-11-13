@@ -8,10 +8,11 @@ class Product extends Model
 {
     protected $fillable = [
         'name',
-        'desc',
+        'description',
         'price',
         'category_id',
         'subcategory_id',
+        'vendorcode'
     ];
     /**
      * Undocumented function

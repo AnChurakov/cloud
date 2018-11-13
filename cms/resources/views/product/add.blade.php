@@ -16,79 +16,95 @@
             <div class="row">
                 <ul class="nav responsive-tab nav-material nav-material-white">
                     <li>
-                        <a class="nav-link active" href="/product/all"><i class="icon icon-list"></i>Все товары</a>
+                        <a class="nav-link" href="/product/all"><i class="icon icon-list"></i>Все товары</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/product/add"><i
+                        <a class="nav-link active" href="/product/add"><i
                                 class="icon icon-plus-circle"></i>Добавить новый товар</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="panel-page-products.html#"><i class="icon icon-trash-can"></i>В корзине</a>
-                    </li>
+                   
                 </ul>
             </div>
         </div>
     </header>
     <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
-            <form id="needs-validation" novalidate>
+            <form action="{{ route('productCreate') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-md-8 ">
+
+                            @if (session()->has('success'))
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Отлично!</strong> Ваш новый товар успешно добавлен
+                                </div>
+                            @endif
+                            
+                            @if ($errors->any())
+
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Ошибка!</strong> Новый товар не добавлен! Проверьте, вы заполнили все поля или нет
+                            </div>
+                            @endif
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationCustom01">Название товара</label>
-                                <input type="text" class="form-control" id="validationCustom01"
-                                       placeholder="Product Name" value="Apple Iphone 8" required>
+                                <input type="text" name="ProductName" class="form-control" id="validationCustom01"
+                                       placeholder="Введите название товара" required>
+                                       @if ($errors->has('ProductName'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('ProductName') }}</strong>
+                                            </span>
+                                        @endif
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="validationCustom02">Product Brand</label>
-                                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name"
-                                       value="Apple" required>
-                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="category">Категория</label>
                                 
-                                <select id="category" class="custom-select form-control" required>
-                                    <option value="" selected disabled>Выберите категорию</option>
-                                    <option value="1">Mobile Phone</option>
-                                    <option value="2">Laptop & Computers</option>
-                                    <option value="3">Accessories</option>
+                                <select id="category" name="category" class="custom-select form-control" required>
+                                    <option selected disabled>Выберите категорию</option>
+                                    @foreach ($category as $cat)
+                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please provide a valid category.
-                                </div>
+                                 @if ($errors->has('category'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('category') }}</strong>
+                                     </span>
+                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationCustom04">Цена</label>
-                                <input type="number" class="form-control" id="validationCustom04" placeholder="Введите цену"
+                                <input type="number" name="Price" class="form-control" id="validationCustom04" placeholder="Введите цену"
                                        required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid price.
-                                </div>
+                                    @if ($errors->has('Price'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('Price') }}</strong>
+                                        </span>
+                                    @endif
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="sku">Артикуль</label>
-                                <input type="text" class="form-control" id="sku" placeholder="Введите артикуль" required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid sku.
-                                </div>
+                                <input type="text" name="vendorcode" class="form-control" id="sku" placeholder="Введите артикуль" required>
+                                @if ($errors->has('vendorcode'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('vendorcode') }}</strong>
+                                        </span>
+                                    @endif
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="productDetails">Описание товара</label>
-                            <textarea class="form-control p-t-40 editor" id="productDetails"
+                            <textarea name="Description" class="form-control p-t-40 editor" id="productDetails"
                                       placeholder="Информация о новом товаре" rows="17" required></textarea>
                             <div class="invalid-feedback">
                                 Please provide a product details.
                             </div>
                         </div>
-                        <!--<div class="form-group">
-                            <label for="tags">Метки товара</label><br>
-                            <input type="text" class="tags-input"  id="tags" placeholder="Add New"
-                                   value="Amsterdam,Washington,Sydney,Beijing,Cairo" required>
-                        </div>-->
+                        
                         
                     </div>
                     <div class="col-md-3">
