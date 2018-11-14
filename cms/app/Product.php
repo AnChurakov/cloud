@@ -30,4 +30,9 @@ class Product extends Model
     public function subCategory() {
         return $this->belongsTo('CMS\SubCategory');
     }
+
+    public function productOrder()
+    {
+        return $this->hasMany('CMS\ProductOrder');
+    }
 }

@@ -49,6 +49,7 @@
                                             <th>Название</th>
                                             <th>Описание</th>
                                             <th>Категория</th>
+                                            <th>Подкатегория</th>
                                             <th>Количество товара</th>                                         
                                             <th>Статус</th>                                            
                                             <th></th>
@@ -67,7 +68,7 @@
                                             </td>
 
                                             <td>                                             
-                                                <strong>{{$prod->name}}</strong>
+                                                <strong><a href="single/{{$prod->id}}">{{$prod->name}}</a></strong>
                                             </td>
 
                                             <td>
@@ -80,6 +81,14 @@
 
                                             <td>
                                                 {{$prod->category->name}}
+                                            </td>
+
+                                            <td>
+                                                @empty(!$prod->subcategory_id)
+                                                    {{$prod->subcategory->name}}
+                                                @else
+                                                    Подкатегории нет
+                                                @endempty
                                             </td>
 
                                             <td>2</td>         

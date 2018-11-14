@@ -31,4 +31,9 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo('CMS\Role');
     }
+
+    public function order()
+    {
+        return $this->hasMany('CMS\Order');
+    }
 }

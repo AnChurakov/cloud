@@ -99,7 +99,7 @@
                         <img class="user_avatar" src="{{ asset('adminpanel/assets/img/dummy/u2.png') }}" alt="User Image">
                     </div>
                     <div class="float-left info">
-                        <h6 class="font-weight-light mt-2 mb-1">Alexander Pierce</h6>
+                        <h6 class="font-weight-light mt-2 mb-1">{{Auth::user()->middlename}} {{Auth::user()->lastname}}</h6>
                         <a href="#"><i class="icon-circle text-success blink"></i> Online</a>
                     </div>
                 </div>
@@ -118,13 +118,31 @@
             <li class="header"><strong>МЕНЮ МАГАЗИНА</strong></li>
             <li class="treeview"><a href="/admin">
                 <i class="icon icon-home2 purple-text s-18"></i> <span>Главная</span>
-            </a></li>         
-            
+            </a></li>             
+  
             <li class="treeview"><a href="/product/all">
                 <i class="icon icon icon-package blue-text s-18"></i>
                 <span>Товары</span>
                 
             </a> </li>
+
+            <li class="treeview"><a href="/order/all">
+                <i class="icon icon icon-shopping_cart blue-text s-18"></i>
+                <span>Заказы</span>
+                
+            </a> </li>
+
+            <li class="treeview"><a href="/product/all">
+                <i class="icon icon icon-note-list blue-text s-18"></i>
+                <span>Характеристики</span>
+                
+            </a> </li>
+            
+
+            
+            <li class="treeview"><a href="/subcategory/all"><i class="icon icon-account_box light-green-text s-18"></i>Страницы
+            </a>                
+            </li>
 
             <li class="treeview"><a href="/category/all"><i class="icon icon-account_box light-green-text s-18"></i>Категории
             </i></a>            
@@ -137,7 +155,7 @@
             <li class="treeview"><a href="/coupon/all"><i class="icon icon-account_box light-green-text s-18"></i>Промокоды</a>               
             </li>
 
-            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Пользователи</a>
+            <li class="treeview"><a href="/user/all"><i class="icon icon-account_box light-green-text s-18"></i>Пользователи</a>
                 
             </li>
             

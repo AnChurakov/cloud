@@ -27,7 +27,12 @@ Route::get('product/{id}', 'ProductController@single')->name('single');
 Route::post('product/create', 'ProductController@create')
             ->name('productCreate')
             ->middleware('auth', 'check.admin');
+            
 Route::get('product/delete/{id}', 'ProductController@delete')
+            ->middleware('auth', 'check.admin');
+
+Route::get('product/single/{id}', 'ProductController@single')
+            ->name('singleProduct')
             ->middleware('auth', 'check.admin');
 /**
  * Маршруты категорий
@@ -82,6 +87,31 @@ Route::get('role/add', 'RoleController@add')
 Route::post('role/create', 'RoleController@create')
             ->name('createRole')
             ->middleware('auth', 'check.admin');
+           
+/**
+ * Маршруты для пользователей
+ */
+Route::get('user/all', 'UserController@all')
+            ->name('userAll')
+            ->middleware('auth', 'check.admin');
+
+
+
+/**
+ * Маршруты для заказов
+ */
+Route::get('order/all', 'OrderController@all')
+            ->name('orderAll')
+            ->middleware('auth', 'check.admin');
+
+Route::get('order/single/{id}', 'OrderController@single')
+            ->name('orderSingle')
+            ->middleware('auth', 'check.admin');
+
+Route::get('order/delete/{id}', 'OrderController@delete')
+            ->name('orderDelete')
+            ->middleware('auth', 'check.admin');
+
 /**
  * Маршруты купонов на товары
  */
