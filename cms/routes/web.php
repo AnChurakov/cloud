@@ -117,20 +117,18 @@ Route::get('order/delete/{id}', 'OrderController@delete')
  */
 Route::get('coupon/all', 'CouponController@all')
             ->name('coupons');
-
 Route::get('coupon/add', 'CouponController@add')
             ->name('coupon.add')
             ->middleware('auth', 'check.admin');
-
 Route::post('coupon/create', 'CouponController@create')
             ->name('coupon.create')
             ->middleware('auth', 'check.admin');
-
+Route::get('coupon/{id}/edit', 'CouponController@edit')
+            ->name('coupon.edit')
+            ->middleware('auth', 'check.admin');
 Route::post('coupon/{id}/update', 'CouponController@update')
             ->name('coupon.update')
             ->middleware('auth', 'check.admin');
-
-
 Route::post('coupon/{id}/delete', 'CouponController@delete')
             ->name('coupon.delete')
             ->middleware('auth', 'check.admin');
