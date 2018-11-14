@@ -94,7 +94,19 @@ Route::post('role/create', 'RoleController@create')
 Route::get('user/all', 'UserController@all')
             ->name('userAll')
             ->middleware('auth', 'check.admin');
+/**
+ * Маршруты для характеристик
+ */
+Route::get('feature/all', 'FeatureController@all')
+            ->name('featureAll')
+            ->middleware('auth', 'check.admin');
 
+Route::get('feature/add', 'FeatureController@add')
+            ->name('featureAdd')
+            ->middleware('auth', 'check.admin');
+
+Route::post('feature/create', 'FeatureController@create')
+            ->middleware('auth', 'check.admin');
 
 
 /**

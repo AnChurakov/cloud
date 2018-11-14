@@ -132,7 +132,7 @@
                 
             </a> </li>
 
-            <li class="treeview"><a href="/product/all">
+            <li class="treeview"><a href="/feature/all">
                 <i class="icon icon icon-note-list blue-text s-18"></i>
                 <span>Характеристики</span>
                 

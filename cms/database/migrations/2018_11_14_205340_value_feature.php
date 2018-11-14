@@ -13,7 +13,7 @@ class ValueFeature extends Migration
      */
     public function up()
     {
-        Schema::create('value_feature', function (Blueprint $table) {
+        Schema::create('value_features', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
