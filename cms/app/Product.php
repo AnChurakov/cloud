@@ -35,4 +35,10 @@ class Product extends Model
     {
         return $this->hasMany('CMS\ProductOrder');
     }
+
+    public function coupons() {
+
+        return $this->hasMany('CMS\Coupon');
+        
+    }
 }

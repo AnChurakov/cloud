@@ -26,7 +26,7 @@
             </div>
         </div>
     </header>
-    @if ($coupons->count() != 0)
+    @if ($coupons->count() !== 0)
     <div class="container-fluid animatedParent animateOnce">
         <div class="tab-content my-3" id="v-pills-tabContent">
             <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
@@ -34,9 +34,8 @@
                     <div class="col-md-12">
                         <div class="card r-0 shadow">
                             <div class="table-responsive">
-                                <form>
-                                    <table class="table table-striped table-hover r-0">
-                                        <thead>
+                                <table class="table table-striped table-hover r-0">
+                                    <thead>
                                         <tr class="no-b">
                                             <th style="width: 30px">
                                                 <div class="custom-control custom-checkbox">
@@ -45,58 +44,52 @@
                                                 </div>
                                             </th>
                                             <th>Название</th>
-                                            <th>Описание</th>
                                             <th>Категория</th>
-                                            <th>Количество товара</th>                                         
+                                            <th>Товар</th>                                         
                                             <th>Статус</th>                                            
-                                            <th></th>
+                                            <th>Действие</th>
                                         </tr>
-                                        </thead>
-
-                                        <tbody>
-                                        
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($coupons as $coupon)
                                         <tr>
                                             <td>
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input checkSingle"
-                                                           id="user_id_1" required><label
-                                                        class="custom-control-label" for="user_id_1"></label>
+                                                    id="coupon_id_{{ $coupon->id }}" required><label
+                                                        class="custom-control-label" for="coupon_id_{{ $coupon->id }}"></label>
                                                 </div>
                                             </td>
-
                                             <td>                                             
-                                                <strong></strong>
+                                                <strong>{{ $coupon->name }}</strong>
                                             </td>
-
                                             <td>
-                                              
+                                                {{$coupon->category->name}}
                                             </td>
-
                                             <td>
-                                               
+                                                {{ $coupon->product_id !== null ? $coupon->product_id : '-' }}
+                                            </td>                     
+                                            <td>
+                                                <span class="icon icon-circle s-12  mr-2 text-warning"></span> Inactive
                                             </td>
-
-                                            <td>2</td>         
-                                                                             
-                                            <td><span class="icon icon-circle s-12  mr-2 text-warning"></span> Inactive</td>
-                                            
-                                            <td>                                                
+                                            <td>                                             
                                                 <a href="#" class="h4 text-primary"><i class="icon-pencil mr-3"></i></a>
-                                                <a href="delete/{{$prod->id}}" class="h4 text-danger"><i class="icon-close"></i></a>           
+                                                <a href="#" class="h4 text-danger" onclick="document.getElementById('delete-coupon-{{ $coupon->id }}').submit()">
+                                                    <i class="icon-close"></i>
+                                                    <form id="delete-coupon-{{ $coupon->id }}" action="{{ route('coupon.delete', ['id'=>$coupon->id]) }}" method="post" style="display: none;">
+                                                            @csrf
+                                                    </form>
+                                                </a>
                                             </td>
-                                        </tr>                                       
-                                       
-                                      
-                                        </tbody>
-                                    </table>
-                                </form>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            
         </div>
     </div>
     @else

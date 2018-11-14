@@ -116,17 +116,23 @@ Route::get('order/delete/{id}', 'OrderController@delete')
  * Маршруты купонов на товары
  */
 Route::get('coupon/all', 'CouponController@all')
-            ->name('CouponAll');
+            ->name('coupons');
 
 Route::get('coupon/add', 'CouponController@add')
-            ->name('CouponAdd')
+            ->name('coupon.add')
             ->middleware('auth', 'check.admin');
 
 Route::post('coupon/create', 'CouponController@create')
-            ->name('createCoupon')
+            ->name('coupon.create')
             ->middleware('auth', 'check.admin');
 
-Route::post('coupon/delete/{id}', 'CouponController@delete')
+Route::post('coupon/{id}/update', 'CouponController@update')
+            ->name('coupon.update')
+            ->middleware('auth', 'check.admin');
+
+
+Route::post('coupon/{id}/delete', 'CouponController@delete')
+            ->name('coupon.delete')
             ->middleware('auth', 'check.admin');
 /**
  * Маршруты администрирования
