@@ -70,8 +70,17 @@
                                                 <strong>{{ $cat->name }}</strong>
                                             </td>
 
-                                            <td>2</td>
-                                            <td>{{ $cat->description }}</td>
+                                            <td><span class="badge r-3 badge-primary pull-right">
+                                                {{$cat->products->where('category_id', '=', $cat->id)->count()}}
+                                            </span></td>
+
+                                            <td>
+                                                @empty(!$cat->description)
+                                                   $cat->description
+                                                @else
+                                                    Описания нет
+                                                @endempty
+                                            </td>
 
                                             <td><span class="icon icon-circle s-12  mr-2 text-warning"></span> Inactive</td>
                                             
