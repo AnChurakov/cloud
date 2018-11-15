@@ -22,11 +22,11 @@
                                 class="icon icon-plus-circle"></i>Добавить новую</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/feature/add"><i
+                        <a class="nav-link" href="/valuefeature/all"><i
                                 class="icon icon-plus-circle"></i>Все значения характеристик</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/feature/add"><i
+                        <a class="nav-link" href="/valuefeature/add"><i
                                 class="icon icon-plus-circle"></i>Добавить новое значение</a>
                     </li>
                 </ul>

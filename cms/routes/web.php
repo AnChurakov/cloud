@@ -108,6 +108,23 @@ Route::get('feature/add', 'FeatureController@add')
 Route::post('feature/create', 'FeatureController@create')
             ->middleware('auth', 'check.admin');
 
+/**
+ * Маршруты для значений характеристик
+ */
+Route::get('valuefeature/all', 'ValueFeatureController@all')
+            ->name('valuefeatureAll')
+            ->middleware('auth', 'check.admin');
+
+Route::get('valuefeature/add', 'ValueFeatureController@add')
+            ->name('valuefeatureAdd')
+            ->middleware('auth', 'check.admin');
+
+Route::get('valuefeature/delete/{id}', 'ValueFeatureController@delete')
+            ->middleware('auth', 'check.admin');
+
+Route::post('valuefeature/create', 'ValueFeatureController@create')
+            ->middleware('auth', 'check.admin');
+
 
 /**
  * Маршруты для заказов
