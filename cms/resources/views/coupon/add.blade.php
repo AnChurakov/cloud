@@ -65,7 +65,7 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label>Категория</label>
                                                     <select class="form-control" name="catId">
-                                                        <option value="#" selected disable>Выберте категорию</option>
+                                                        <option value="" selected disable>Выберте категорию</option>
                                                         @foreach ($categories as $cat)
                                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                         @endforeach
@@ -76,7 +76,7 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label>Подкатегория</label>
                                                     <select class="form-control" name="subcatId">
-                                                    <option value="#" selected disable>Выберте подкатегорию</option>
+                                                    <option value="" selected disable>Выберте подкатегорию</option>
                                                         @foreach ($subcategories as $subcat)
                                                             <option value="{{$subcat->id}}">{{$subcat->name}}</option>
                                                         @endforeach
@@ -87,7 +87,7 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label>Статус</label>
                                                     <select class="form-control" name="status">
-                                                        <option value="#" selected disable>Выберте статус</option>
+                                                        <option value="" selected disable>Выберите статус</option>
                                                         <option value="activecode">Активирован</option>
                                                         <option value="noactivecode">Неактивирован</option>
                                                     </select>

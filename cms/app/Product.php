@@ -30,7 +30,20 @@ class Product extends Model
     public function subCategory() {
         return $this->belongsTo('CMS\SubCategory');
     }
+<<<<<<< HEAD
     public function coupons() {
         return $this->hasMany('CMS\Coupon');
+=======
+
+    public function productOrder()
+    {
+        return $this->hasMany('CMS\ProductOrder');
+    }
+
+    public function coupons() {
+
+        return $this->hasMany('CMS\Coupon');
+        
+>>>>>>> anton
     }
 }

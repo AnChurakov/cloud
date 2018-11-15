@@ -64,7 +64,7 @@
                                                 <strong>{{ $coupon->name }}</strong>
                                             </td>
                                             <td>
-                                                category
+                                                {{$coupon->category->name}}
                                             </td>
                                             <td>
                                                 {{ $coupon->product_id !== null ? $coupon->product_id : '-' }}
