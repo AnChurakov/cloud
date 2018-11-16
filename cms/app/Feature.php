@@ -9,7 +9,7 @@ class Feature extends Model
 {
     protected $fillable = ['name'];
 
-    public function valuefeature(){
+    public function valuefeature() {
         return $this->belongsToMany(ValueFeature::class);
     }
     
