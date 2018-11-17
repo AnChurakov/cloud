@@ -36,4 +36,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('CMS\Order');
     }
+
+    public function basket(){
+        return $this->hasMany('CMS\Basket');
+    }
 }

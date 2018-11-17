@@ -41,4 +41,8 @@ class Product extends Model
         return $this->hasMany('CMS\Coupon');
         
     }
+
+    public function basket(){
+        return $this->hasMany('CMS\Basket');
+    }
 }
