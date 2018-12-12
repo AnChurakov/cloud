@@ -13,12 +13,12 @@ class ValuefeatureFeature extends Migration
      */
     public function up()
     {
-        Schema::create('valuefeature_features', function (Blueprint $table) {
+        Schema::create('feature_value_feature', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('features_id')->length(10)->unsigned();
-            $table->foreign('features_id')->references('id')->on('features');
-            $table->integer('value_features_id')->length(10)->unsigned();
-            $table->foreign('value_features_id')->references('id')->on('value_features');
+            $table->integer('feature_id')->length(10)->unsigned();
+            $table->foreign('feature_id')->references('id')->on('features');
+            $table->integer('value_feature_id')->length(10)->unsigned();
+            $table->foreign('value_feature_id')->references('id')->on('value_features');
             $table->timestamps();
         });
     }

@@ -16,10 +16,10 @@
           
         </div>
     </header>
-    <div class="container-fluid relative animatedParent animateOnce">
+    <div class="container-fluid relative ">
         <div class="tab-content pb-3" id="v-pills-tabContent">
             <!--Today Tab Start-->
-            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-1">
+            <div class="tab-pane active" id="v-pills-1">
                 <div class="row my-3">
                     <div class="col-md-3">
                         <div class="counter-box white r-5 p-3">
@@ -86,7 +86,7 @@
             </div>
             <!--Today Tab End-->
 
-            <div class="row my-3 animated fadeInUpShort show">
+            <div class="row my-3 animated ">
                     <div class="col-md-12">
                         <div class="card r-0 ">
                             <div class="table-responsive">

@@ -34,8 +34,8 @@
             </div>
         </div>
     </header>
-    <div class="container-fluid animatedParent animateOnce my-3">
-        <div class="animated fadeInUpShort">
+    <div class="container-fluid my-3">
+        <div>
            
                 <div class="row">
                     <div class="col-md-8 ">

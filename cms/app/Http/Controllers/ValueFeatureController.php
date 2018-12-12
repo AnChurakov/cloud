@@ -4,16 +4,22 @@ namespace CMS\Http\Controllers;
 
 use Gate;
 use Validator;
-use CMS\ValueFeature;
 use CMS\Feature;
+use CMS\ValueFeature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Db;
 use Illuminate\Support\Facades\Auth;
 
 class ValueFeatureController extends Controller
 {
     public function all() {
 
-        $valueFeature = ValueFeature::all()->sortByDesc('name');
+        $valueFeature = Db::table('value_features')
+                            ->join('feature_value_feature', 'feature_value_feature.value_feature_id', '=', 'value_features.id')
+                            ->join('features', 'features.id', '=', 'feature_value_feature.feature_id')
+                            ->select('value_features.*', 'features.name as feature_name')
+                            ->orderBy('value_features.name')
+                            ->get();
 
         return view('valuefeature.all', [
             'valuefeatures' => $valueFeature

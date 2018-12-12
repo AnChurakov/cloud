@@ -319,7 +319,7 @@
         <div class="inner">
           <!-- Off-Canvas Toggle (#shop-categories)--><a class="offcanvas-toggle cats-toggle" href="#shop-categories" data-toggle="offcanvas"></a>
           <!-- Off-Canvas Toggle (#mobile-menu)--><a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
-          <!-- Site Logo--><a class="site-logo" href="index.html"><img src="{{ asset('shopTemplate/img/logo/logo.png') }}" alt="Unishop"></a>
+          <!-- Site Logo--><a class="site-logo" href="/"><img src="{{ asset('shopTemplate/img/logo/logo.png') }}" alt="Unishop"></a>
         </div>
       </div>
       <!-- Main Navigation-->
@@ -491,10 +491,11 @@
         <div class="inner">
           <div class="tools">
             <div class="search"><i class="icon-search"></i></div>
-            <div class="account"><a href="account-orders.html"></a><i class="icon-head"></i>
+            @auth
+            <div class="account"><a href="#"></a><i class="icon-head"></i>
               <ul class="toolbar-dropdown">
                 <li class="sub-menu-user">
-                  <div class="user-ava"><img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
+                  <div class="user-ava"><img src="{{ asset('shopTemplate/img/account/user-ava-sm.jpg') }}" alt="Daniel Adams">
                   </div>
                   <div class="user-info">
                     <h6 class="user-name">Daniel Adams</h6><span class="text-xs text-muted">290 Reward points</span>
@@ -507,6 +508,13 @@
                 <li><a href="#"> <i class="icon-unlock"></i>Logout</a></li>
               </ul>
             </div>
+            @endauth
+
+            @guest
+             <div class="account"><a href="/login"></a><i class="icon-head"></i>
+              
+            </div>
+            @endguest
             <div class="cart"><a href="cart.html"></a><i class="icon-bag"></i><span class="count">3</span><span class="subtotal">$289.68</span>
               <div class="toolbar-dropdown">
                 <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/01.jpg" alt="Product"></a>

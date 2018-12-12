@@ -17,8 +17,8 @@ class CreateProductFastOrdersTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->length(10)->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
-            $table->integer('fastorder_id')->length(10)->unsigned();
-            $table->foreign('fastorder_id')->references('id')->on('fast_orders');
+            $table->integer('fast_order_id')->length(10)->unsigned();
+            $table->foreign('fast_order_id')->references('id')->on('fast_orders');
            
            
             $table->timestamps();

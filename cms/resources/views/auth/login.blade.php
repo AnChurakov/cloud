@@ -35,10 +35,22 @@
               </div>
               <h4 class="margin-bottom-1x">Or using form below</h4>
               <div class="form-group input-group">
-                <input class="form-control" id="email" type="email" placeholder="Email" required><span class="input-group-addon"><i class="icon-mail"></i></span>
+               
+                <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus><span class="input-group-addon"><i class="icon-mail"></i></span>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
               </div>
               <div class="form-group input-group">
-                <input class="form-control" id="password" type="password" placeholder="Password" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+                
+                <input id="password" placeholder="Password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
               </div>
               <div class="d-flex flex-wrap justify-content-between padding-bottom-1x">
                 <div class="custom-control custom-checkbox">
@@ -101,7 +113,7 @@
       </div>
         
 <!--================login Area =================-->
-<section class="login_area p_100">
+<!--<section class="login_area p_100">
             <div class="container">
                 <div class="login_inner">
                     <div class="row">
@@ -145,7 +157,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
     
 
 @endsection

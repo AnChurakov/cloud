@@ -26,8 +26,8 @@
             </div>
         </div>
     </header>
-    <div class="container-fluid animatedParent animateOnce my-3">
-        <div class="animated fadeInUpShort">
+    <div class="container-fluid my-3">
+        <div>
                 <div class="row">
                     <div class="col-md-8 ">
                         @if (session()->has('success'))
@@ -45,20 +45,18 @@
                                 <strong>Редактирование промокода</strong>
                             </div>
                                 <div class="card-body b-b">
-                                    <form action="{{ route('coupon.update', ['id'=>]) }}" method="POST">
+                                    <form action="{{ route('coupon.update', ['id'=>$coupon->id]) }}" method="POST">
                                         @csrf
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Название</label>
-                                                    <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                                        placeholder="Введите название">
+                                                    <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Введите название" value="{{ $coupon->name }}">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
-                                                    <label>Значение</label>
-                                                    <input type="text" name="procent" class="form-control"
-                                                        placeholder="Введите значение">
+                                                    <label>Скидка</label>
+                                                    <input type="text" name="procent" class="form-control" placeholder="Введите значение" value="{{ $coupon->procent }}">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -67,7 +65,7 @@
                                                     <select class="form-control" name="catId">
                                                         <option value="#" selected disable>Выберте категорию</option>
                                                         @foreach ($categories as $cat)
-                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                            <option value="{{$cat->id}}" {{ $cat->id === $coupon->category_id ? 'selected' : '' }}>{{$cat->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -78,7 +76,7 @@
                                                     <select class="form-control" name="subcatId">
                                                     <option value="#" selected disable>Выберте подкатегорию</option>
                                                         @foreach ($subcategories as $subcat)
-                                                            <option value="{{$subcat->id}}">{{$subcat->name}}</option>
+                                                            <option value="{{$subcat->id}}" {{ $subcat->id === $coupon->subcategory_id ? 'selected' : '' }}>{{$subcat->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -88,8 +86,8 @@
                                                     <label>Статус</label>
                                                     <select class="form-control" name="status">
                                                         <option value="#" selected disable>Выберте статус</option>
-                                                        <option value="activecode">Активирован</option>
-                                                        <option value="noactivecode">Неактивирован</option>
+                                                        <option value="activecode" {{ $coupon->status === 'activecode' ? 'selected' : '' }}>Активирован</option>
+                                                        <option value="noactivecode" {{ $coupon->status === 'noactivecode' ? 'selected' : '' }}>Неактивирован</option>
                                                     </select>
                                                 </div>
                                             </div>

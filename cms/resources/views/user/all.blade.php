@@ -26,9 +26,9 @@
             </div>
         </div>
     </header>
-    <div class="container-fluid animatedParent animateOnce">
+    <div class="container-fluid">
         <div class="tab-content my-3" id="v-pills-tabContent">
-            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+            <div class="tab-pane active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                 <div class="row my-3">
                     <div class="col-md-12">
                         <div class="card r-0 shadow">

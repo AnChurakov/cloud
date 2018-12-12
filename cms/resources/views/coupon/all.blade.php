@@ -27,9 +27,9 @@
         </div>
     </header>
     @if ($coupons->count() !== 0)
-    <div class="container-fluid animatedParent animateOnce">
+    <div class="container-fluid">
         <div class="tab-content my-3" id="v-pills-tabContent">
-            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+            <div class="tab-pane active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                 <div class="row my-3">
                     <div class="col-md-12">
                         <div class="card r-0 shadow">
@@ -73,7 +73,7 @@
                                                 <span class="icon icon-circle s-12  mr-2 text-warning"></span> Inactive
                                             </td>
                                             <td>                                             
-                                                <a href="#" class="h4 text-primary"><i class="icon-pencil mr-3"></i></a>
+                                                <a href="{{ route('coupon.edit', ['id'=>$coupon->id]) }}" class="h4 text-primary"><i class="icon-pencil mr-3"></i></a>
                                                 <a href="#" class="h4 text-danger" onclick="document.getElementById('delete-coupon-{{ $coupon->id }}').submit()">
                                                     <i class="icon-close"></i>
                                                     <form id="delete-coupon-{{ $coupon->id }}" action="{{ route('coupon.delete', ['id'=>$coupon->id]) }}" method="post" style="display: none;">

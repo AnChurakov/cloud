@@ -34,7 +34,7 @@
         </div>
     </header>
     @if ($valuefeatures->count() != 0)
-    <div class="container-fluid animatedParent animateOnce">
+    <div class="container-fluid">
         <div class="tab-content my-3" id="v-pills-tabContent">
             <div class="tab-pane  active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                 <div class="row my-3">
@@ -51,7 +51,8 @@
                                                         class="custom-control-label" for="checkedAll"></label>
                                                 </div>
                                             </th>
-                                            <th>Название</th>                                           
+                                            <th>Название</th>
+                                            <th>Характеристика</th>                                           
                                             <th>ДАТА</th>
                                             <th>CТАТУС</th>
                                             <th></th>
@@ -72,11 +73,11 @@
                                             <td>
                                                 {{$valuefeature->name}}
                                             </td>
-
                                             <td>
-                                                {{$valuefeature->created_at->format('d.m.Y')}}
-             
-                                  
+                                                {{ $valuefeature->feature_name }}
+                                            </td>
+                                            <td>
+                                                {{date('d.m.Y', strtotime($valuefeature->created_at))}}
                                             <td>
                                             <span class="icon icon-circle s-12 mr-2 text-danger"></span> Неоплачено
                                             </td>
